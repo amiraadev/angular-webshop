@@ -1,0 +1,18 @@
+<mat-toolbar class="max-w-7xl mx-auto border-x justify-between">
+    <a routerLink="home">
+        Code with Sloba store
+    </a>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon
+           [matBadge]="1"
+           matBadgeColor="warn">shopping-cart</mat-icon> 
+    </button>
+    <mat-menu #menu="matMenu">
+       <div class="p-3 divide-y divide-solid">
+          <div class="pb-3 flex justify-between">
+            <span class="mr-16">1 items</span>
+            <a routerLink="cart">View cart</a>
+          </div>
+       </div>
+    </mat-menu>
+</mat-toolbar>
