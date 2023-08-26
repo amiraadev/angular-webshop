@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProductsHeaderComponent } from './pages/home/components/products-header/products-header.component';
+import { FilterComponent } from './pages/home/components/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ProductsHeaderComponent } from './pages/home/components/products-header
     HeaderComponent,
     HomeComponent,
     ProductsHeaderComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,
