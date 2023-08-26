@@ -6,8 +6,9 @@
    </mat-expansion-panel-header>
 
    <mat-selection-list [multiple]="false">
-       <mat-list-option *ngFor="let category of categories" [value]="category">
-          <button>{{category}}</button>
+       <mat-list-option *ngFor="let category of categories" >
+          <button (click)="onUpdateCategory(category)">{{category}}</button>
        </mat-list-option>
+       <!-- <button (click)="onUpdateCategory('category')">test</button> -->
    </mat-selection-list>
 </mat-expansion-panel>
