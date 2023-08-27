@@ -12,6 +12,12 @@ export class CartComponent {
     price : 150,
     quantity : 1,
     id : 1,
+  },{  
+    product : 'https://via.placeholder.com/150',
+    name : 'Milka',
+    price : 150,
+    quantity : 2,
+    id : 2,
   }]}
 
   dataSource :Array<CartItem>=[];
@@ -22,4 +28,10 @@ export class CartComponent {
   ngOnInit() {
     this.dataSource = this.cart.items;
   };
+
+  getTotal(items:CartItem[]):number {
+   return items.
+    map((item) => item.price * item.quantity)
+    .reduce((sum, item) => sum + item,0)
+  }
 }
