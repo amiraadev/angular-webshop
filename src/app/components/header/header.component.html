@@ -4,7 +4,8 @@
     </a>
     <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon
-           [matBadge]="1"
+           [matBadge]="itemsQuantity"
+           [matBadgeHidden]="!itemsQuantity"
            matBadgeColor="warn">
            shopping_cart
         </mat-icon> 
@@ -12,31 +13,27 @@
     <mat-menu #menu="matMenu">
        <div class="p-3 divide-y divide-solid">
           <div class="pb-3 flex justify-between">
-            <span class="mr-16">1 Items</span>
+            <span class="mr-16">{{itemsQuantity}} Items</span>
             <a routerLink="cart">View Cart</a>
           </div>
-          <div class="py-3">
-              <div class="flex justify-between font-light mb-2">
-                Keyboard x 1
-                <span class="font-bold">{{'150' | currency}}</span>
-              </div>
-              <div class="flex justify-between font-light mb-2">
-                Keyboard x 1
-                <span class="font-bold">{{'150' | currency}}</span>
-              </div>
-              <div class="flex justify-between font-light mb-2">
-                Keyboard x 1
-                <span class="font-bold">{{'150' | currency}}</span>
+          <div *ngIf="cart.items.length" class="py-3">
+              <div 
+                *ngFor="let item of cart.items"
+                 class="flex justify-between font-light mb-2">
+                {{item.name}}*{{item.quantity}}
+                <span class="font-bold">{{item.price | currency}}</span>
               </div>
           </div>
 
           <div class="flex justify-between font-light py-3">
             Total:
-            <span class="font-bold">{{'450' | currency}}</span>
+            <span class="font-bold">{{getTotal(cart.items) | currency}}</span>
           </div>
 
           <div class="flex justify-between pt-3">
-               <button class="bg-red-600 text-white rounded-full w-9 h-9">
+               <button 
+                     (click)="onClearCart()"
+                     class="bg-red-600 text-white rounded-full w-9 h-9">
                     <mat-icon>
                         remove_shopping_cart
                     </mat-icon> 
