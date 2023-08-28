@@ -28,10 +28,17 @@ export class CartComponent {
 
   constructor(private cartService:CartService){}
   ngOnInit() {
-    this.dataSource = this.cart.items;
+    this.cartService.cart.subscribe((_cart:Cart) =>{
+      this.cart = _cart;
+      this.dataSource = this.cart.items;
+    })
   };
 
   getTotal(items:CartItem[]):number {
    return this.cartService.getTotal(items);
+  }
+
+  onClearCart():void{
+    this.cartService.clearCart();
   }
 }
