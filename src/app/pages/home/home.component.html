@@ -14,7 +14,7 @@
         [rowHeight]="rowHeight"
         >
 
-          <mat-grid-tile>
+          <mat-grid-tile *ngFor="let product of products">
             <app-product-box 
                 (addToCart)="onAddToCart($event)"
                 class="w-full" 
