@@ -27,7 +27,7 @@ ngOnInit():void{
 
 }
 getProducts():void{
-  this.productsSubscription=this.storeService.getAllProducts(this.count,this.sort)
+  this.productsSubscription=this.storeService.getAllProducts(this.count,this.sort,this.category)
      .subscribe((_products) => {
       this.products = _products;
      })
@@ -39,7 +39,8 @@ getProducts():void{
 
   onShowCategory(newCategory:string):void{
      this.category = newCategory;
-     
+     this.getProducts();
+
   }
 
 
@@ -55,20 +56,23 @@ getProducts():void{
   }
 
   onItemsCountChange(newCount:number):void{
-      this.count = newCount.toString();
-      this.getProducts();
-      }
-
+    this.count = newCount.toString();
+    this.getProducts();
+  }
+  
   onSortChange(newSort: string):void {
     this.sort = newSort;
     this.getProducts();
+    console.log("newSort: " + newSort);  
   }
 
-      ngOnDestroy(): void {
-          if(this.productsSubscription){ 
-            this.productsSubscription.unsubscribe();
-          }
+  ngOnDestroy(): void {
+      if(this.productsSubscription){ 
+        this.productsSubscription.unsubscribe();
       }
+  }
+
+
   }
 
   
