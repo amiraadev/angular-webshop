@@ -6,7 +6,11 @@
          <app-filter (showCategory)="onShowCategory($event)">Filters</app-filter>
     </mat-drawer>
     <mat-drawer-content class="p-6">
-      <app-products-header (columnsCountChange)="onColumnsCountChange($event)"></app-products-header>
+      <app-products-header 
+          (columnsCountChange)="onColumnsCountChange($event)" 
+          (itemsCountChange)="onItemsCountChange($event)" 
+          (sortChange)="onSortChange($event)" 
+        ></app-products-header>
       <!-- {{cols}} /***{{category}} -->
       <mat-grid-list
         gutterSize="16"
